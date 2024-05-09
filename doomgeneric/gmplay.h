@@ -24,8 +24,8 @@
 #include <time.h>      // time
 #include <unistd.h>    // usleep
 
-#define KINDLE_RESX 600
-#define KINDLE_RESY 800
+#define KINDLE_RESX 1072
+#define KINDLE_RESY 1448
 
 #ifdef X_PC
 #include <X11/XKBlib.h>
@@ -33,8 +33,8 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 
-#define KINDLE_FB_RES_X (600 + 8)
-#define KINDLE_FB_RES_Y (800 + 8)
+#define KINDLE_FB_RES_X (KINDLE_RESX + 8)
+#define KINDLE_FB_RES_Y (KINDLE_RESY + 8)
 #endif
 
 typedef unsigned long u64;
@@ -89,6 +89,6 @@ int gmlib(int);
 void gm_show_fb(unsigned char *fbt);
 int main_gmplay(void);
 
-#define FBSIZE (600 / 8 * 800)
+#define FBSIZE (KINDLE_RESX / 8 * KINDLE_RESY)
 
 #endif
