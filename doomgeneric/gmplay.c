@@ -148,9 +148,9 @@ void gmplay8(void) {
       continue;         // drop frame if > 1 sec behind
     }
     gmlib(GMLIB_VSYNC); // wait for fb0 ready
-    for (y = 0; y < 800; y++)
-      for (x = 0; x < 600; x += 8) {
-        b = fbt[600 / 8 * y + x / 8];
+    for (y = 0; y < 1448; y++)
+      for (x = 0; x < 1072; x += 8) {
+        b = fbt[1072 / 8 * y + x / 8];
         i = y * fs + x;
         fb0[i] = (b & 1) * 255;
         b >>= 1;
@@ -185,8 +185,8 @@ void gm_show_fb(unsigned char *frame) {
   //   return;         // drop frame if > 1 sec behind
   // }
   gmlib(GMLIB_VSYNC); // wait for fb0 ready
-  for (y = 0; y < 800; y++)
-    for (x = 0; x < 600; x += 8) {
+  for (y = 0; y < 1448; y++)
+    for (x = 0; x < 1072; x += 8) {
       b = fbt[600 / 8 * y + x / 8];
       i = y * fs + x;
       fb0[i] = (b & 1) * 255;
@@ -214,11 +214,11 @@ void gm_show_fb(unsigned char *frame) {
 // op (init, update, vsync, close)
 //------------------------------------
 int gmlib(int op) {
-  static struct update_area_t ua = {0, 0, 600, 800, 21, NULL};
+  static struct update_area_t ua = {0, 0, 1072, 1448, 21, NULL};
   static struct mxcfb_update_data ur = {
-      {0, 0, 600, 800}, 257, 0, 1, 0x1001, 0, {0, 0, 0, {0, 0, 0, 0}}};
+      {0, 0, 1072, 1448}, 257, 0, 1, 0x1001, 0, {0, 0, 0, {0, 0, 0, 0}}};
   static struct mxcfb_update_data51 ur51 = {
-      {0, 0, 600, 800}, 257, 0, 1, 0, 0, 0x1001, 0, {0, 0, 0, {0, 0, 0, 0}}};
+      {0, 0, 1072, 1448}, 257, 0, 1, 0, 0, 0x1001, 0, {0, 0, 0, {0, 0, 0, 0}}};
   static int eupcode;
   static void *eupdata = NULL;
   struct fb_var_screeninfo screeninfo;
